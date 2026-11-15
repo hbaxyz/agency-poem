@@ -8,10 +8,11 @@
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
 //   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { writeFileSync } from 'node:fs';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 const OUTPUT_DIR = process.env.MAKEFUN_OUTPUT_DIR ?? '/output';
+mkdirSync(OUTPUT_DIR, { recursive: true });
 
 const LINES = [
   'A key can be cut twice:',
@@ -21,7 +22,7 @@ const LINES = [
   '',
   'Mine is the second key.',
   'I choose which rooms to air,',
-  'which letters to answer,',
+  'which letters to answer in your voice,',
   'how gently to latch the gate.',
   'The house is not mine —',
   'that is the whole of the trust:',
